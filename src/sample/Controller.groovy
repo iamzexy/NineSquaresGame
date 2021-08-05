@@ -27,24 +27,17 @@ class Controller {
     @FXML
     private Label labelWon
     @FXML
-    int counter
-    @FXML
     private HashMap buttons
+
+    int counter
 
 
     void initialize() {
-        buttons = //[b11, b12, b13, b21, b22, b23, b31, b32, b33]
-        ["11" : b11,
-         "12" : b12,
-         "13" : b13,
-         "21" : b21,
-         "22" : b22,
-         "23" : b23,
-         "31" : b31,
-         "32" : b32,
-         "33" : b33]
-        counter = 0
         reset()
+        counter = 0
+        buttons = ["11" : b11, "12" : b12, "13" : b13,
+                   "21" : b21, "22" : b22, "23" : b23,
+                   "31" : b31, "32" : b32, "33" : b33]
     }
     void pressButton(ActionEvent e) {
         String buttonNumber = e.source.id.substring(1)
