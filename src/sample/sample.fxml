@@ -18,18 +18,19 @@
    <children>
       <AnchorPane prefHeight="371.0" prefWidth="314.0">
          <children>
-            <ToggleButton id="b11" fx:id="b11" layoutX="48.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton11" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b33" fx:id="b33" layoutX="213.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton33" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b31" fx:id="b31" layoutX="48.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton31" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b13" fx:id="b13" layoutX="213.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton13" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b12" fx:id="b12" layoutX="133.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton12" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b32" fx:id="b32" layoutX="133.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton32" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b22" fx:id="b22" layoutX="133.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton22" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b23" fx:id="b23" layoutX="213.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton23" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
-            <ToggleButton id="b21" fx:id="b21" layoutX="48.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton21" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b11" fx:id="b11" layoutX="48.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b33" fx:id="b33" layoutX="213.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b31" fx:id="b31" layoutX="48.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b13" fx:id="b13" layoutX="213.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b12" fx:id="b12" layoutX="133.0" layoutY="120.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b32" fx:id="b32" layoutX="133.0" layoutY="280.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b22" fx:id="b22" layoutX="133.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b23" fx:id="b23" layoutX="213.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
+            <ToggleButton id="b21" fx:id="b21" layoutX="48.0" layoutY="194.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/style.css" />
             <Button id="resetButton" fx:id="resetButton" layoutX="122.0" layoutY="60.0" mnemonicParsing="false" onAction="#reset" prefHeight="35.0" prefWidth="76.0" stylesheets="@../resources/style.css" text="Reset" />
-            <Label id="labelWon" fx:id="labelWon" alignment="CENTER" layoutX="96.0" layoutY="14.0" prefHeight="28.0" prefWidth="122.0" text="You won!" visible="false" />
+            <Label id="labelWon" fx:id="labelWon" alignment="CENTER" layoutX="96.0" layoutY="14.0" prefHeight="28.0" prefWidth="122.0" visible="false" />
          </children>
+
       </AnchorPane>
    </children>
 </GridPane>

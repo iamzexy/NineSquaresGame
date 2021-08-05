@@ -27,98 +27,83 @@ class Controller {
     @FXML
     private Label labelWon
     @FXML
-    private List buttons
+    int counter
+    @FXML
+    private HashMap buttons
 
 
     void initialize() {
-        buttons = [b11, b12, b13, b21, b22, b23, b31, b32, b33]
+        buttons = //[b11, b12, b13, b21, b22, b23, b31, b32, b33]
+        ["11" : b11,
+         "12" : b12,
+         "13" : b13,
+         "21" : b21,
+         "22" : b22,
+         "23" : b23,
+         "31" : b31,
+         "32" : b32,
+         "33" : b33]
+        counter = 0
         reset()
     }
-    void pressButton11(ActionEvent e) {
-        b12.isSelected() ? b12.setSelected(false) : b12.setSelected(true)
-        b21.isSelected() ? b21.setSelected(false) : b21.setSelected(true)
+    void pressButton(ActionEvent e) {
+        String buttonNumber = e.source.id.substring(1)
+        int x = Character.getNumericValue(buttonNumber.charAt(0))
+        int y = Character.getNumericValue(buttonNumber.charAt(1))
+        String btnNum = "$x${y-1}"
+        changeButton(btnNum)
+        btnNum = "$x${y+1}"
+        changeButton(btnNum)
+        btnNum = "${x-1}$y"
+        changeButton(btnNum)
+        btnNum = "${x+1}$y"
+        changeButton(btnNum)
+        counter++
         if (checkIfWon(e))
             won(e)
     }
-    void pressButton12(ActionEvent e) {
-        b11.isSelected() ? b11.setSelected(false) : b11.setSelected(true)
-        b13.isSelected() ? b13.setSelected(false) : b13.setSelected(true)
-        b22.isSelected() ? b22.setSelected(false) : b22.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
+
+    void changeButton(String btnNum) {
+        if (!btnNum.contains("0") && !btnNum.contains("4")) {
+            def btn = buttons.get(btnNum)
+            btn.isSelected() ? btn.setSelected(false) : btn.setSelected(true)
+        }
     }
-    void pressButton13(ActionEvent e) {
-        b12.isSelected() ? b12.setSelected(false) : b12.setSelected(true)
-        b23.isSelected() ? b23.setSelected(false) : b23.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton21(ActionEvent e) {
-        b11.isSelected() ? b11.setSelected(false) : b11.setSelected(true)
-        b22.isSelected() ? b22.setSelected(false) : b22.setSelected(true)
-        b31.isSelected() ? b31.setSelected(false) : b31.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton22(ActionEvent e) {
-        b12.isSelected() ? b12.setSelected(false) : b12.setSelected(true)
-        b21.isSelected() ? b21.setSelected(false) : b21.setSelected(true)
-        b23.isSelected() ? b23.setSelected(false) : b23.setSelected(true)
-        b32.isSelected() ? b32.setSelected(false) : b32.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton23(ActionEvent e) {
-        b13.isSelected() ? b13.setSelected(false) : b13.setSelected(true)
-        b22.isSelected() ? b22.setSelected(false) : b22.setSelected(true)
-        b33.isSelected() ? b33.setSelected(false) : b33.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton31(ActionEvent e) {
-        b21.isSelected() ? b21.setSelected(false) : b21.setSelected(true)
-        b32.isSelected() ? b32.setSelected(false) : b32.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton32(ActionEvent e) {
-        b31.isSelected() ? b31.setSelected(false) : b31.setSelected(true)
-        b22.isSelected() ? b22.setSelected(false) : b22.setSelected(true)
-        b33.isSelected() ? b33.setSelected(false) : b33.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
-    void pressButton33(ActionEvent e) {
-        b23.isSelected() ? b23.setSelected(false) : b23.setSelected(true)
-        b32.isSelected() ? b32.setSelected(false) : b32.setSelected(true)
-        if (checkIfWon(e))
-            won(e)
-    }
+
     void won(ActionEvent e) {
+        labelWon.setText("You won! Clicks: $counter")
         labelWon.setVisible(true)
-        buttons.forEach() {ToggleButton btn ->
-            btn.setDisable(true)
+        buttons.each { k, v ->
+            v.setDisable(true)
         }
     }
 
     boolean checkIfWon(ActionEvent e) {
         boolean isWon = true
-        buttons.forEach() {ToggleButton btn ->
-            btn.isSelected() ?: (isWon = false)
+        buttons.each { k, v ->
+            v.isSelected() ?: (isWon = false)
         }
         return isWon
     }
 
     void reset(ActionEvent e) {
-        buttons.forEach() {ToggleButton btn ->
-            btn.setSelected(false)
-            btn.setDisable(false)
-        }
+        reactivateButtons()
         labelWon.setVisible(false)
-        def rand = new Random()
-        def b1 = buttons.get(rand.nextInt(buttons.size()))
-        def b2 = buttons.get(rand.nextInt(buttons.size()))
-        b1.setSelected(true)
-        b2.setSelected(true)
+        setStartedButtons()
+        counter = 0
+    }
+
+    void reactivateButtons() {
+        buttons.each { k, v ->
+            v.setSelected(false)
+            v.setDisable(false)
+        }
+    }
+
+    void setStartedButtons() {
+        List keys = new ArrayList(buttons.keySet())
+        keys.shuffle()
+        buttons.get(keys.get(0)).setSelected(true)
+        buttons.get(keys.get(1)).setSelected(true)
     }
 }
