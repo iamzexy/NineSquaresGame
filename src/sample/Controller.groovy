@@ -33,11 +33,11 @@ class Controller {
 
 
     void initialize() {
-        reset()
-        counter = 0
         buttons = ["11" : b11, "12" : b12, "13" : b13,
                    "21" : b21, "22" : b22, "23" : b23,
                    "31" : b31, "32" : b32, "33" : b33]
+        counter = 0
+        reset()
     }
     void pressButton(ActionEvent e) {
         String buttonNumber = e.source.id.substring(1)
@@ -66,15 +66,15 @@ class Controller {
     void won(ActionEvent e) {
         labelWon.setText("You won! Clicks: $counter")
         labelWon.setVisible(true)
-        buttons.each { k, v ->
-            v.setDisable(true)
+        buttons.each { key, btn ->
+            btn.setDisable(true)
         }
     }
 
     boolean checkIfWon(ActionEvent e) {
         boolean isWon = true
-        buttons.each { k, v ->
-            v.isSelected() ?: (isWon = false)
+        buttons.each { key, btn ->
+            btn.isSelected() ?: (isWon = false)
         }
         return isWon
     }
@@ -87,9 +87,9 @@ class Controller {
     }
 
     void reactivateButtons() {
-        buttons.each { k, v ->
-            v.setSelected(false)
-            v.setDisable(false)
+        buttons.each { key, btn ->
+            btn.setSelected(false)
+            btn.setDisable(false)
         }
     }
 
